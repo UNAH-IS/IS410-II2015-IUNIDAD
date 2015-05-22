@@ -13,9 +13,9 @@ public class Principal {
 		Circulo circulos[] = new Circulo[3];
 		circulos[0] = new Circulo();
 		circulos[0].setDiametro(50);
-		
+		circulos = new Circulo[10];
 		Circulo c = new Circulo(10,10,12,"Rojo");
 		
-		//System.out.println(c.toString());
+		System.out.println(c);
 	}
 }

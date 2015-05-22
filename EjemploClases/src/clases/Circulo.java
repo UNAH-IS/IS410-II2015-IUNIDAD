@@ -76,7 +76,7 @@ public class Circulo{
 		
 	void colorear(){}
 	
-	/*public String toString(){
+	public String toString(){
 		return "Circulo de color "+color + ", con diametro "+diametro;
-	}*/
+	}
 }
