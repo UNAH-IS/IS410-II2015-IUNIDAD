@@ -1,10 +1,13 @@
 package clases;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 public class Libro {
 	private String titulo;
-	private String autor;
+	private Autor autor;
+	//private ArrayList<Autor> autores; //En el caso de agregar varios autores
 	private String genero;
 	private String editorial;
 	private String isbn;
@@ -13,7 +16,7 @@ public class Libro {
 	private int anio;	
 	private int cantidadPaginas;
 	public Libro(String titulo, 
-			String autor, 
+			Autor autor, 
 			String genero, 
 			String editorial,
 			String isbn, 
@@ -32,7 +35,9 @@ public class Libro {
 		this.cantidadPaginas = cantidadPaginas;
 	}
 	
-	public Libro(){}
+	public Libro(){
+		autor = new Autor();
+	} //Sobrecarga de constructor vacio
 	
 	public String getTitulo() {
 		return titulo;
@@ -40,10 +45,10 @@ public class Libro {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public String getAutor() {
+	public Autor getAutor() {
 		return autor;
 	}
-	public void setAutor(String autor) {
+	public void setAutor(Autor autor) {
 		this.autor = autor;
 	}
 	public String getGenero() {
@@ -91,7 +96,7 @@ public class Libro {
 	@Override
 	public String toString() {
 		return titulo + "\t\t\t" + 
-				autor + "\t\t\t"+ 
+				autor.toString() + "\t\t\t"+ 
 				genero + "\t\t\t" + 
 				editorial + "\t\t\t" + 
 				isbn+ "\t\t\t" + 
@@ -101,15 +106,28 @@ public class Libro {
 				cantidadPaginas;
 	}
 	
-	public void solicitarDatos(Libro libroAnterior){
-		titulo = JOptionPane.showInputDialog("Titulo:",libroAnterior.getTitulo());
-		autor = JOptionPane.showInputDialog("Autor:",libroAnterior.getAutor());
-		genero = JOptionPane.showInputDialog("Genero:",libroAnterior.getGenero());
-		editorial = JOptionPane.showInputDialog("Editorial:",libroAnterior.getEditorial());
-		isbn = JOptionPane.showInputDialog("ISBN:",libroAnterior.getIsbn());
-		idioma = JOptionPane.showInputDialog("Idioma:",libroAnterior.getIdioma());
-		edicion = Integer.valueOf(JOptionPane.showInputDialog("Edicion:",libroAnterior.getEdicion()));
-		anio = Integer.valueOf(JOptionPane.showInputDialog("Año:",libroAnterior.getAnio()));
-		cantidadPaginas = Integer.valueOf(JOptionPane.showInputDialog("Cantidad de paginas:",libroAnterior.getCantidadPaginas()));
+	/*public void solicitarInformacion(){
+		titulo = JOptionPane.showInputDialog("Titulo del libro:");
+		autor = JOptionPane.showInputDialog("Autor:");
+		genero = JOptionPane.showInputDialog("Genero:");
+		editorial = JOptionPane.showInputDialog("Editorial:");
+		isbn = JOptionPane.showInputDialog("ISBN:");
+		idioma = JOptionPane.showInputDialog("Idioma:");
+		edicion = Integer.valueOf(JOptionPane.showInputDialog("Edicion:"));
+		anio = Integer.valueOf(JOptionPane.showInputDialog("Año:"));
+		cantidadPaginas = Integer.valueOf(JOptionPane.showInputDialog("Paginas:"));
+	}*/
+	public void solicitarInformacion(Libro libro){
+		titulo = JOptionPane.showInputDialog("Titulo del libro:",libro.getTitulo());
+		//autor = JOptionPane.showInputDialog("Autor:",libro.getAutor());
+		autor.solicitarInformacion(libro.getAutor());
+		genero = JOptionPane.showInputDialog("Genero:",libro.getGenero());
+		editorial = JOptionPane.showInputDialog("Editorial:",libro.getEditorial());
+		isbn = JOptionPane.showInputDialog("ISBN:",libro.getIsbn());
+		idioma = JOptionPane.showInputDialog("Idioma:",libro.getIdioma());
+		edicion = Integer.valueOf(JOptionPane.showInputDialog("Edicion:",libro.getEdicion()));
+		anio = Integer.valueOf(JOptionPane.showInputDialog("Año:",libro.getAnio()));
+		cantidadPaginas = Integer.valueOf(JOptionPane.showInputDialog("Paginas:",libro.getCantidadPaginas()));
 	}
+	
 }

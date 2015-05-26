@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Libro {
 	private String titulo;
-	private String autor;
+	private String autor; 
 	private String genero;
 	private String editorial;
 	private String isbn;
@@ -113,19 +113,15 @@ public class Libro {
 		cantidadPaginas = Integer.valueOf(JOptionPane.showInputDialog("Paginas:"));
 	}*/
 	public void solicitarInformacion(Libro libro){
-		Libro l = new Libro();
-		if (libro != null){
-			l = libro;
-		}
-		titulo = JOptionPane.showInputDialog("Titulo del libro:",l.getTitulo());
-		autor = JOptionPane.showInputDialog("Autor:",l.getAutor());
-		genero = JOptionPane.showInputDialog("Genero:",l.getGenero());
-		editorial = JOptionPane.showInputDialog("Editorial:",l.getEditorial());
-		isbn = JOptionPane.showInputDialog("ISBN:",l.getIsbn());
-		idioma = JOptionPane.showInputDialog("Idioma:",l.getIdioma());
-		edicion = Integer.valueOf(JOptionPane.showInputDialog("Edicion:",l.getEdicion()));
-		anio = Integer.valueOf(JOptionPane.showInputDialog("Año:",l.getAnio()));
-		cantidadPaginas = Integer.valueOf(JOptionPane.showInputDialog("Paginas:",l.getCantidadPaginas()));
+		titulo = JOptionPane.showInputDialog("Titulo del libro:",libro.getTitulo());
+		autor = JOptionPane.showInputDialog("Autor:",libro.getAutor());
+		genero = JOptionPane.showInputDialog("Genero:",libro.getGenero());
+		editorial = JOptionPane.showInputDialog("Editorial:",libro.getEditorial());
+		isbn = JOptionPane.showInputDialog("ISBN:",libro.getIsbn());
+		idioma = JOptionPane.showInputDialog("Idioma:",libro.getIdioma());
+		edicion = Integer.valueOf(JOptionPane.showInputDialog("Edicion:",libro.getEdicion()));
+		anio = Integer.valueOf(JOptionPane.showInputDialog("Año:",libro.getAnio()));
+		cantidadPaginas = Integer.valueOf(JOptionPane.showInputDialog("Paginas:",libro.getCantidadPaginas()));
 	}
 	
 }
