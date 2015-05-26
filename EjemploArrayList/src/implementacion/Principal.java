@@ -13,19 +13,19 @@ public class Principal {
 		
 		Libro l2 = new Libro("Fundamentos de BD",
 				"SilbersChatz","Programacion","Editorial Y",
-				"NFJJ666","Español",
+				"NFJJ666","EspaÃ±ol",
 				12,2015,5000
 				);		
 		
 		Libro l3 = new Libro("El alquimista",
 				"Pablo Cohelo","Novela","Editorial Z",
-				"GT565677","Español",
+				"GT565677","EspaÃ±ol",
 				3,1998,500
 				);
 		//Agregar una instancia de forma anonima
 		libros.add(new Libro("Como Programar en Java",
 				"Deitel","Programacion","Editorial X",
-				"NFJ456564","Español",
+				"NFJ456564","EspaÃ±ol",
 				9,2007,6000000
 				)); //0
 		libros.add(l2); //1
