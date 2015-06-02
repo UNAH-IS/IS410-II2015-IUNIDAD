@@ -24,7 +24,7 @@ public class Abogado extends Persona implements Humano{
 
 	@Override
 	public void reproducir() {
-		
+		//
 	}
 
 }
