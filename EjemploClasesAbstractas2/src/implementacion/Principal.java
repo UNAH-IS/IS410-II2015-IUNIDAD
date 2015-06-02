@@ -7,9 +7,15 @@ import clases.Figura;
 import clases.Rectangulo;
 
 public class Principal {
-	//Figura f;
-	private ArrayList<Figura> figuras;
+	private Figura f;
+	/*
+	 * Podemos definir una coleccion generica que almacene
+	 * objetos de diferente tipo siempre y cuando sean del
+	 * mismo padre.
+	 */
 	
+	private ArrayList<Figura> figuras;
+	 
 	public Principal(){
 		figuras = new ArrayList<Figura>();
 		
@@ -35,12 +41,29 @@ public class Principal {
 		
 		mostrarRectangulos();
 		mostrarCuadrados();
-		System.out.println("-----------------------");
-		/*for (int i=0;i<figuras.size();i++){
-			System.out.println(figuras.get(i).getClass());
-			if (figuras.get(i).getClass().toString().equals("class clases.Rectangulo"))
-				System.out.println("Es un rectangulo");
-		}*/
+		System.out.println("---------Pruebas de compatibilidad--------------");
+		//Crear objetos a partir de constructores de clases hijas
+		//
+		f = new Rectangulo(10,10,"Amarillo",
+				"Figura a partir de un rectangulo",500,200);
+		f = new Cuadrado(
+				20,15,"Azul","figura a partir de un Cuadrado",100);
+		//ClasePadre o = new ClaseHija();
+		//System.out.println(f.toString());
+		
+		
+		Rectangulo r4 = new Rectangulo(
+				10,10,"Azul dorado","Rectangulo 4 ",500,200);
+		Cuadrado c4 = new Cuadrado(
+				20,15,"Azul cielo","Cuadrado 4",100);
+		
+		//Hacer un cast o asignacion de un objeto
+		//hijo a un objeto padre
+		//PADRE = HIJO  VALIDO!
+		r4 = (Rectangulo)c4;
+		//HIJO = PADRE INVALIDO!!!
+		//c4 = (Cuadrado)r4;
+		System.out.println(r4.toString());
 	}
 	
 	public void mostrarRectangulos(){

@@ -7,7 +7,10 @@ import clases.Figura;
 import clases.Rectangulo;
 
 public class Principal {
-	Figura f;
+	private Figura f;
+	//Definir colecciones que almacenen objetos 
+	//de diferentes tipos siempre y cuando tengan
+	//dependencia jerarquica
 	private ArrayList<Figura> figuras;
 	
 	public Principal(){
@@ -41,9 +44,38 @@ public class Principal {
 		*c.dibujar();*/
 		/*metodoX(r);
 		metodoX(c);*/
-		mostrarRectangulos();
-		mostrarCuadrados();
+		//mostrarRectangulos();
+		//mostrarCuadrados();
 		
+		
+		//Crear instancias de un objeto de una clase padre
+		//utilizando el constructor de una clase hija
+		f = new Rectangulo(
+				20,122,"Amarillo",
+				"Rectangulo a partir de una figura",
+				600,400);
+		
+		//System.out.println(f.toString());
+		
+		//Padre = Hijo;
+		//Cuadrado c = new Rectangulo(); //INVALIDO!!!!
+		Rectangulo r5 = new Cuadrado();
+		Figura f1 = new Cuadrado();
+		
+		Rectangulo r6 = new Rectangulo(20,122,"Amarillo",
+				"Rectangulo",
+				600,400);
+		Cuadrado c4 = new Cuadrado(15,20,
+				"Morado","Cuadrado 3",100);
+		
+		//Hacer un cast de un objeto de 
+		//una clase hija a un objeto de una clase padre
+		
+		r6 = (Rectangulo)c4; //Cast de tipos, esta si es valida
+		//c4 = (Cuadrado)r6; //INVALIDA
+		
+		System.out.println(r6.toString());
+		System.out.println(c4.toString());
 	}
 	
 	public void mostrarRectangulos(){

@@ -26,6 +26,8 @@ public class Rectangulo extends Figura{
 	public int getAlto() {
 		return alto;
 	}
+	
+	
 	public void setAlto(int alto) {
 		this.alto = alto;
 	}
