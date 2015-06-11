@@ -1,9 +1,9 @@
 
-public class ClaseGenerica <T>{
+public class ClaseGenerica <T,Z>{ //Type
 	private T t;
-	public ClaseGenerica(){
-		
-	}
+	private Z z;
+	
+	public ClaseGenerica(){}
 	
 	public T get(){
 		return t;

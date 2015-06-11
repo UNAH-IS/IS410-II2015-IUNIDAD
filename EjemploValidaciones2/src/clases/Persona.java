@@ -1,5 +1,7 @@
 package clases;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +17,10 @@ public class Persona {
 	
 	private String errores = "";
 	private String patronIdentidad = "[0-9]{4}-[0-9]{4}-[0-9]{5}";
+	//El patron de la edad no funciona
+	private String patronEdad = "[0-1][0-5][0-9]|[0-9][0-9]|[0-9]";//0 - 159 
+	private String patronFecha = "dd/MM/yyyy";
+	
 	public Persona(String identidad, String nombre, String apellido, int edad,
 			String genero, String fechaNacimiento) {
 		this.identidad = identidad;
@@ -83,11 +89,16 @@ public class Persona {
 	}
 	
 	public void solicitarDatos(Persona p){
-		//errores = "";
+		errores = "";
 		identidad = JOptionPane.showInputDialog("Identidad:",p.getIdentidad());
 		nombre = JOptionPane.showInputDialog("Nombre:",p.getNombre());
 		apellido = JOptionPane.showInputDialog("Apellido:",p.getApellido());
 		String strEdad = JOptionPane.showInputDialog("Edad:",p.getEdad()); 
+		//Validacion con expresiones regulares
+		if(!validarPatron(patronEdad, strEdad))
+			errores += "El campo edad no es valido\n";
+		
+		//Validacion capturando la excepcion
 		try {
 			//edad = Integer.valueOf(strEdad.isEmpty()?"0":strEdad);
 			edad = Integer.valueOf(strEdad);
@@ -118,11 +129,31 @@ public class Persona {
 		/*String partes[] = identidad.split("-");
 		if(partes.length!=3)
 			errores += "La identidad debe tener el formato XXXX-XXXX-XXXXX";*/
-		Pattern pattern = Pattern.compile(patronIdentidad);
-		Matcher matcher = pattern.matcher(identidad);
-		if(!matcher.matches())
-			errores += "La identidad debe tener el formato XXXX-XXXX-XXXXX";
+		if(!validarPatron(patronIdentidad, identidad))
+				errores += "La identidad debe tener el formato XXXX-XXXX-XXXXX";
+	
+		
+		SimpleDateFormat sdf = 
+				new SimpleDateFormat(patronFecha);
+		sdf.setLenient(false);
+		
+		try {
+			sdf.parse(fechaNacimiento);
+		} catch (ParseException e) {
+			errores += "El campo fecha no es valido (DD/MM/YYYY)\n";
+		}
+		
+		/*Validacion con ER
+		 * if(!validarPatron(patronFecha, fechaNacimiento))
+			errores += "El campo fecha no es valido";*/
 		
 		return errores;
+	}
+	
+	public boolean validarPatron(String patron, String texto){
+		Pattern pattern = Pattern.compile(patron);
+		Matcher matcher = pattern.matcher(texto);
+		return matcher.matches();
+	
 	}
 }
